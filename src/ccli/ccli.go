@@ -6,10 +6,10 @@ import (
 )
 
 type Ccli struct {
-	http       *httpcli.Httpcli
-	configName string
-	Host       string
-	Port       int32
+	Http  *httpcli.Httpcli
+	Cname string
+	Host  string
+	Port  int32
 }
 
 func NewCcli(host string, port int32) *Ccli {
@@ -17,22 +17,17 @@ func NewCcli(host string, port int32) *Ccli {
 	cnames := os.Args[1:]
 	cname := cnames[0]
 
-	c.http = httpcli.NewHttpcli()
-	c.configName = cname
+	c.Http = httpcli.NewHttpcli()
+	c.Cname = cname
 	c.Host = host
 	c.Port = port
 	return c
 }
 
-func (c *Ccli) Cname() string {
-	return c.configName
-}
+// func (c *Ccli) Cname() string {
+// 	return c.configName
+// }
 
-func (c *Ccli) Http() *httpcli.Httpcli {
-	return c.http
-}
-
-// func (c *Ccli) Do() {
-// 	h := httpcli.NewHttpcli()
-// 	h.Get()
+// func (c *Ccli) Http() *httpcli.Httpcli {
+// 	return c.http
 // }
